@@ -8,14 +8,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/aelion/models/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/aelion/models/Student.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/aelion/repositories/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/aelion/repositories/StudentRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fr/aelion/run/StudentRun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/aelion/run/StudentRun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/fr/aelion/user/LoginManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/fr/aelion/user/LoginManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/LoginManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/StudentRepositoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/StudentRepositoryTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/aelion/models/Student.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/aelion/models/Student.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/aelion/repositories/StudentRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/aelion/repositories/StudentRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fr/aelion/run/StudentRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/aelion/run/StudentRun.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/fr/aelion/user/LoginManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fr/aelion/user/LoginManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/LoginManagerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/LoginManagerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/StudentRepositoryTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/StudentRepositoryTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

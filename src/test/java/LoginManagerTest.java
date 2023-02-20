@@ -1,3 +1,5 @@
+import fr.aelion.models.Student;
+import fr.aelion.repositories.StudentRepository;
 import fr.aelion.user.LoginManager;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -34,5 +36,32 @@ public class LoginManagerTest {
     public void badCredentials() {
         LoginManager loginManager = new LoginManager("toto", "tata");
         assertEquals("404 Not Found", loginManager.login());
+    }
+
+    @Test
+    @DisplayName("Student should be logged in")
+    public void studentLogin() {
+
+        StudentRepository studentRepository = this.loginManager.getStudentRepository();
+        Student student = studentRepository.findByLoginAndPassword("bond", "007");
+
+        assertEquals(false, student.isLoggedIn());
+        this.loginManager.login();
+
+        assertEquals(true, student.isLoggedIn());
+    }
+
+    @Test
+    @DisplayName("Student should be logged out")
+    public void studentLogout() {
+
+        StudentRepository studentRepository = this.loginManager.getStudentRepository();
+        Student student = studentRepository.findByLoginAndPassword("bond", "007");
+        this.loginManager.login();
+        assertEquals(true, student.isLoggedIn());
+
+        this.loginManager.logout();
+        assertEquals(false, student.isLoggedIn());
+
     }
 }

@@ -53,7 +53,9 @@ public class Student {
         return isLoggedIn;
     }
 
-
+    public void isLoggedIn(boolean isLoggedIn) {
+        this.isLoggedIn = isLoggedIn;
+    }
 
 
 }
