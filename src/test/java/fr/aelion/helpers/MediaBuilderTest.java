@@ -7,12 +7,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
 
 class MediaBuilderTest {
     private MediaBuilder mediaBuilder = new MediaBuilder();
+    private MediaBuilder badBuilder = new MediaBuilder();
 
     @BeforeEach
     void setUp() {
@@ -22,6 +25,12 @@ class MediaBuilderTest {
                 .summary("Youplaboom trop cool")
                 .author(new Author())
                 .duration(5.35F);
+
+        badBuilder.setMediaType("document");
+        badBuilder
+                .summary("Youplaboom trop cool")
+                .author(new Author())
+                .title("Test");
     }
 
     @Test
@@ -40,6 +49,15 @@ class MediaBuilderTest {
                 () -> assertEquals("Youplaboom trop cool", video.getSummary()),
                 () -> assertEquals(duration, video.getDuration()),
                 () -> assertTrue(video.getAuthor() instanceof Author)
+        );
+    }
+
+    @Test
+    @DisplayName("Should return empty optional")
+    void notEnoughAttribute() {
+        assertAll(
+                () -> assertTrue(badBuilder.build() instanceof Optional),
+                () -> assertTrue(badBuilder.build().isEmpty())
         );
     }
 }

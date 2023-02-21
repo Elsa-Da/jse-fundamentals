@@ -3,6 +3,7 @@ package fr.aelion.helpers;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.courses.*;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 public class MediaBuilder implements Builder<Media> {
@@ -39,6 +40,10 @@ public class MediaBuilder implements Builder<Media> {
     }
     @Override
     public Optional<Media> build() {
+               if (this.title == null || this.duration == null) {
+            return Optional.empty();
+        }
+
         Media media;
 
         switch (this.mediaType.toUpperCase()) {
