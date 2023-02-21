@@ -9,10 +9,13 @@ public class DisplayCourse {
         this.course = course;
     }
 
-    public void display() {
-        System.out.println("Course : " + course.getTitle());
+    public String displayBuilder() {
+        final String[] output = new String[1];
+
+        output[0]= "Course : " + course.getTitle() + "\n";
         course.getMedias().forEach(m -> {
-            System.out.println(m.getTitle());
+            output[0] += m.getTitle() + "\n";
         });
+        return output[0];
     }
 }
