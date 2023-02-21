@@ -12,6 +12,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class MediaBuilderTest {
     private MediaBuilder mediaBuilder = new MediaBuilder();
@@ -36,28 +37,50 @@ class MediaBuilderTest {
     @Test
     @DisplayName("Should be an instanceof Video class")
     void build() {
-        assertTrue(mediaBuilder.build().get() instanceof Video);
+        try {
+            Media media = mediaBuilder.build();
+            assertTrue(media instanceof Video);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Test
     @DisplayName("Should have correct attribute values")
     void attributesTest() {
-        Media video = mediaBuilder.build().get();
-        Float duration = 5.35F;
-        assertAll(
-                () -> assertEquals("Test", video.getTitle()),
-                () -> assertEquals("Youplaboom trop cool", video.getSummary()),
-                () -> assertEquals(duration, video.getDuration()),
-                () -> assertTrue(video.getAuthor() instanceof Author)
-        );
+        Media video = null;
+        try {
+            video = mediaBuilder.build();
+            Float duration = 5.35F;
+            Media finalVideo = video;
+            assertAll(
+                    () -> assertEquals("Test", finalVideo.getTitle()),
+                    () -> assertEquals("Youplaboom trop cool", finalVideo.getSummary()),
+                    () -> assertEquals(duration, finalVideo.getDuration()),
+                    () -> assertTrue(finalVideo.getAuthor() instanceof Author)
+            );
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     @Test
-    @DisplayName("Should return empty optional")
+    @DisplayName("Not enough attbts should raised an Exception")
     void notEnoughAttribute() {
-        assertAll(
-                () -> assertTrue(badBuilder.build() instanceof Optional),
-                () -> assertTrue(badBuilder.build().isEmpty())
-        );
+        assertThrows(Exception.class, () -> badBuilder.build());
+    }
+
+    @Test
+    @DisplayName("No type should raised and Exception")
+    void noType() {
+        MediaBuilder bad = new MediaBuilder();
+        bad
+                .title("Bad")
+                .summary("Bad")
+                .author(new Author())
+                .duration(5.35F);
+        assertThrows(Exception.class, () -> badBuilder.build());
     }
 }

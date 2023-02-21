@@ -38,10 +38,14 @@ public class MediaBuilder implements Builder<Media> {
         this.author = author;
         return this;
     }
+
     @Override
-    public Optional<Media> build() {
-               if (this.title == null || this.duration == null) {
-            return Optional.empty();
+    public Media build() throws Exception {
+        if (this.title == null || this.duration == null) {
+            throw new Exception("title or duration is missing, unable to create Media");
+        }
+        if (this.mediaType == null) {
+            throw new Exception("Media type is null, unable to create Media");
         }
 
         Media media;
@@ -66,6 +70,6 @@ public class MediaBuilder implements Builder<Media> {
         media.setDuration(this.duration);
         media.setAuthor(this.author);
 
-        return Optional.of(media);
+        return media;
     }
 }
