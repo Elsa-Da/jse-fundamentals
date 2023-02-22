@@ -1,3 +1,4 @@
+import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.repositories.StudentRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -11,7 +12,7 @@ public class StudentRepositoryTest {
     StudentRepository studentRepository;
 
     @BeforeEach
-    public void setup() {
+    public void setup() throws NotEnoughArgsException {
         studentRepository = new StudentRepository();
     }
 

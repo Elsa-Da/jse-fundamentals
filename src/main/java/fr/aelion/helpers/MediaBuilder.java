@@ -1,5 +1,7 @@
 package fr.aelion.helpers;
 
+import fr.aelion.helpers.exceptions.NoMediaTypeException;
+import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.helpers.interfaces.Builder;
 import fr.aelion.models.courses.*;
 
@@ -40,12 +42,12 @@ public class MediaBuilder implements Builder<Media> {
     }
 
     @Override
-    public Media build() throws Exception {
+    public Media build() throws NotEnoughArgsException, NoMediaTypeException {
         if (this.title == null || this.duration == null) {
-            throw new Exception("title or duration is missing, unable to create Media");
+            throw new NotEnoughArgsException("Missing duration or title");
         }
         if (this.mediaType == null) {
-            throw new Exception("Media type is null, unable to create Media");
+            throw new NoMediaTypeException();
         }
 
         Media media;

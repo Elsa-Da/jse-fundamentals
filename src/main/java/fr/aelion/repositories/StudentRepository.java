@@ -1,5 +1,7 @@
 package fr.aelion.repositories;
 
+import fr.aelion.helpers.StudentBuilder;
+import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.models.Student;
 
 import java.util.ArrayList;
@@ -8,7 +10,7 @@ import java.util.List;
 public class StudentRepository {
     private List<Student> students = new ArrayList<>();
 
-    public StudentRepository() {
+    public StudentRepository(){
         this.populate();
     }
 
@@ -24,13 +26,22 @@ public class StudentRepository {
     public int size() {
         return this.students.size();
     }
-    private void populate() {
+    private void populate(){
         //Make an instance of Student : student
-        Student student = new Student("Bond", "James", "jamesbond@lemail.com");
-        student.setUsername("bond");
-        student.setPassword("007");
+        StudentBuilder student = StudentBuilder.getInstance();
+        student
+                .lastName("Bond")
+                .firstName("James")
+                .email("jbond@mail.com")
+                .login("JBond")
+                .password("007")
+                .phoneNumber("06 58 98 74 28");
 
         //Add student to list
-        this.students.add(student);
+        try {
+            this.students.add(student.build());
+        } catch (NotEnoughArgsException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -30,18 +30,18 @@ public class LoginManager {
             return "403 Forbidden";
         }
         Student student = this.studentRepository.findByLoginAndPassword(this.login, this.password);
-      if( student instanceof Student) {
-          student.isLoggedIn(true);
-          return "200 OK";
-      }
-      return "404 Not Found";
-      }
+        if (student instanceof Student) {
+            student.isLoggedIn(true);
+            return "200 OK";
+        }
+        return "404 Not Found";
+    }
 
 
     public void logout() {
         Student student = this.studentRepository.findByLoginAndPassword(this.login, this.password);
         if (student instanceof Student) {
-        student.isLoggedIn(false);
+            student.isLoggedIn(false);
         }
     }
 }

@@ -1,10 +1,10 @@
 package fr.aelion.models;
 
-public class Student {
-    public String lastName;
-    public String firstName;
-    private String email;
+public class Student extends Person {
+
     private String username;
+    private String password;
+    private Boolean isLoggedIn = false;
 
     public String getUsername() {
         return username;
@@ -12,13 +12,6 @@ public class Student {
 
     public String getPassword() {
         return password;
-    }
-
-    private String password;
-    private Boolean isLoggedIn = false;
-
-    public String getEmail() {
-        return email;
     }
 
     public void setUsername(String username) {
@@ -29,11 +22,11 @@ public class Student {
         this.password = password;
     }
 
-
-    public Student(String lastName, String firstName, String email) {
+    public Student(String lastName, String email, String login, String password) {
         this.lastName = lastName;
-        this.firstName = firstName;
         this.email = email;
+        this.username = login;
+        this.password = password;
     }
 
 

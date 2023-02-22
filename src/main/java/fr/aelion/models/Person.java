@@ -33,10 +33,10 @@ public class Person {
         this.email = email;
     }
 
-    private String lastName;
-    private String firstName;
-    private String phoneNumber;
-    private String email;
+    protected String lastName;
+    protected String firstName;
+    protected String phoneNumber;
+    protected String email;
 
     public Person() {};
     public Person(String lastName, String firstName, String phoneNumber, String email) {
