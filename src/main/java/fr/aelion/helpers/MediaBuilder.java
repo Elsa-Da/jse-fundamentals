@@ -51,10 +51,17 @@ public class MediaBuilder implements Builder<Media> {
             throw new NoMediaTypeException();
         }
 
-        Media media = new MediaFactory().getMedia(this.mediaType);
-        if (media == null) {
-            throw new IllegalArgumentException("MediaType " + mediaType + " doesn't exist");
+        Media media = null;
+        try {
+            media = new MediaFactory().getMedia(this.mediaType);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
+
 
         media.setTitle(this.title);
         media.setSummary(this.summary);

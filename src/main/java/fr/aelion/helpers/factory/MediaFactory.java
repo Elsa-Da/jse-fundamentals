@@ -1,22 +1,21 @@
 package fr.aelion.helpers.factory;
 
-import fr.aelion.models.courses.Document;
 import fr.aelion.models.courses.Media;
-import fr.aelion.models.courses.Slide;
-import fr.aelion.models.courses.Video;
-
-import java.util.HashMap;
 
 public class MediaFactory {
-    private HashMap<String, Media> mediaTypes = new HashMap<>();
 
-    public MediaFactory() {
-        mediaTypes.put("VIDEO", new Video());
-        mediaTypes.put("SLIDE", new Slide());
-        mediaTypes.put("DOCUMENT", new Document());
+    private final static String classRoot = "fr.aelion.models.courses";
+
+
+    public Media getMedia(String mediaType) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        String className = mediaType.toLowerCase();
+        className = String.valueOf(mediaType.charAt(0)).toUpperCase() + className.substring(1);
+        return getInstance(className);
     }
 
-    public Media getMedia(String mediaType) {
-        return mediaTypes.get(mediaType.toUpperCase());
+    private Media getInstance(String mediaType) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        String className = MediaFactory.classRoot + "." + mediaType;
+        return (Media) Class.forName(className).newInstance();
     }
+
 }
