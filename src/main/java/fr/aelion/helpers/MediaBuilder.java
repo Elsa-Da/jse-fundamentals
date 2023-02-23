@@ -4,6 +4,8 @@ import fr.aelion.helpers.exceptions.NoMediaTypeException;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.helpers.factory.MediaFactory;
 import fr.aelion.helpers.interfaces.Builder;
+import fr.aelion.helpers.strategies.media.IMediaStrategy;
+import fr.aelion.helpers.strategies.media.VideoMediaStrategy;
 import fr.aelion.models.courses.*;
 
 import javax.swing.text.html.Option;

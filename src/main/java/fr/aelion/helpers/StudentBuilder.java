@@ -43,7 +43,7 @@ public class StudentBuilder implements Builder<Student> {
         return this;
     }
 
-    public StudentBuilder login(String string) {
+    public StudentBuilder username(String string) {
         this.login = string;
         return this;
     }

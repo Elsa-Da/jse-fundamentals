@@ -1,13 +1,12 @@
 package fr.aelion;
 
-
-import fr.aelion.run.CourseRun;
+import fr.aelion.run.StudentRun;
 
 public class Main {
 
     public static void main(String[] args) {
-        CourseRun courseRun = new CourseRun();
-        courseRun.run();
+        StudentRun studentRun = new StudentRun();
+        studentRun.run();
     }
 
 }

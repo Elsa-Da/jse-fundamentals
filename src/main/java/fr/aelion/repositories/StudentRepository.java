@@ -33,7 +33,7 @@ public class StudentRepository {
                 .lastName("Bond")
                 .firstName("James")
                 .email("jbond@mail.com")
-                .login("JBond")
+                .username("JBond")
                 .password("007")
                 .phoneNumber("06 58 98 74 28");
 
