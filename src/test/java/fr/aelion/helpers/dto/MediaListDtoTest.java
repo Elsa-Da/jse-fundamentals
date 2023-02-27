@@ -7,6 +7,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.InvocationTargetException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class MediaListDtoTest {
@@ -27,8 +29,12 @@ class MediaListDtoTest {
 
     @Test
     @DisplayName("Should return the video title")
-    void deserialize() {
-        dto.deserialize(video);
-        assertEquals("Test video", dto.title);
+    void deserialize() throws InvocationTargetException, NoSuchMethodException, IllegalAccessException {
+        DtoMapper mapper = new DtoMapper();
+
+        dto = (MediaListDto) mapper.map(video, dto);
+        assertAll (
+                () -> assertEquals(video.getTitle(), dto.title),
+                () -> assertEquals(video.getDuration(), dto.duration));
     }
 }
