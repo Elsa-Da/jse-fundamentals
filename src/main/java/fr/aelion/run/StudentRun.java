@@ -6,6 +6,7 @@ import fr.aelion.helpers.strategies.student.LastNameFirstNameStrategy;
 import fr.aelion.models.Student;
 
 public class StudentRun {
+
     public void run() {
         try {
             Student student = ((StudentBuilder) StudentBuilder.getInstance())
@@ -25,3 +26,4 @@ public class StudentRun {
 
     }
 }
+
