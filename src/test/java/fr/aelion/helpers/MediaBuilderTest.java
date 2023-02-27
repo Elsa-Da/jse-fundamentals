@@ -1,13 +1,12 @@
 package fr.aelion.helpers;
 
+import fr.aelion.helpers.builders.MediaBuilder;
 import fr.aelion.models.courses.Author;
 import fr.aelion.models.courses.Media;
 import fr.aelion.models.courses.Video;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
-import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

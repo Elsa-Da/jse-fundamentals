@@ -1,4 +1,4 @@
-package fr.aelion.helpers;
+package fr.aelion.helpers.builders;
 
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.helpers.interfaces.Builder;

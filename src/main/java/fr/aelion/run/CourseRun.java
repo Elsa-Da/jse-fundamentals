@@ -1,13 +1,11 @@
 package fr.aelion.run;
 
-import fr.aelion.helpers.MediaBuilder;
+import fr.aelion.helpers.builders.MediaBuilder;
 import fr.aelion.helpers.exceptions.NoMediaTypeException;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.models.courses.*;
 import fr.aelion.repositories.courses.Course;
 import fr.aelion.services.courses.DisplayCourse;
-
-import java.security.spec.ECField;
 
 public class CourseRun {
 

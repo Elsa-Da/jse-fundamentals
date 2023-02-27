@@ -1,6 +1,6 @@
 package fr.aelion.repositories;
 
-import fr.aelion.helpers.StudentBuilder;
+import fr.aelion.helpers.builders.StudentBuilder;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.models.Student;
 

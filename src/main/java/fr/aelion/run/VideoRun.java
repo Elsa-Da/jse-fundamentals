@@ -1,12 +1,10 @@
 package fr.aelion.run;
 
-import fr.aelion.helpers.MediaBuilder;
+import fr.aelion.helpers.builders.MediaBuilder;
 import fr.aelion.helpers.exceptions.NoMediaTypeException;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
-import fr.aelion.helpers.strategies.media.IMediaStrategy;
 import fr.aelion.helpers.strategies.media.VideoMediaStrategy;
 import fr.aelion.models.courses.Author;
-import fr.aelion.models.courses.Media;
 import fr.aelion.models.courses.Video;
 
 public class VideoRun {

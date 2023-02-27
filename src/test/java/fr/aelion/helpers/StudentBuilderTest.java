@@ -1,5 +1,6 @@
 package fr.aelion.helpers;
 
+import fr.aelion.helpers.builders.StudentBuilder;
 import fr.aelion.helpers.exceptions.NotEnoughArgsException;
 import fr.aelion.models.Student;
 import org.junit.jupiter.api.BeforeEach;
