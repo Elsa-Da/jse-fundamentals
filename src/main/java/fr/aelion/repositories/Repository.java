@@ -5,8 +5,6 @@ import fr.aelion.helpers.CaseConverter;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 public abstract class Repository<T> {
@@ -19,15 +17,15 @@ public abstract class Repository<T> {
         this.simpleName = model.getSimpleName();
     }
 
-    public String getTableName() {
+    protected String getTableName() {
         return simpleName.toLowerCase();
     }
 
-    public String getAliasedTableName() {
+    protected String getAliasedTableName() {
         return getTableName() + " " + getTableName().substring(0, 1);
     }
 
-    public String[] getFields() {
+    protected String[] getFields() {
         var current = model;
         var stringFields = new ArrayList<String>();
         while (current.getSuperclass() != null) {
@@ -46,7 +44,7 @@ public abstract class Repository<T> {
         return stringFields.toArray(new String[0]);
     }
 
-    public String getCommaSeparatedColumns() {
+    protected String getCommaSeparatedColumns() {
 
         String commaSeparatedColumns = "";
         String[] fields = getFields();
@@ -62,7 +60,7 @@ public abstract class Repository<T> {
         return commaSeparatedColumns.substring(0, commaSeparatedColumns.length()-1);
     }
 
-    public String getSelectQuery() {
+    protected String getSelectQuery() {
         return "SELECT " + getCommaSeparatedColumns() + " FROM " + getAliasedTableName() + ";";
     }
 

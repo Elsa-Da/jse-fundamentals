@@ -29,8 +29,7 @@ public class StudentRepository extends Repository<Student> {
         ArrayList<Student> students = new ArrayList<>();
 
         // need an SQL query
-        String sqlQuery = "SELECT id, last_name, first_name, email, phone_number, login, password ";
-        sqlQuery += "FROM student ORDER BY last_name, first_name;";
+        String sqlQuery = getSelectQuery().substring(0, getSelectQuery().length()-1) + " ORDER BY last_name, first_name;";
 
         // send sqlQuery to RDBMS => need to create a Statement object
         Connection connection = this.dbConnect.connect();
@@ -40,7 +39,7 @@ public class StudentRepository extends Repository<Student> {
         // exploit the ResultSet obejct => loop over a cursor
         while (resultSet.next()) {
             Student student = new Student();
-            student.setId(resultSet.getInt(1));
+            student.setId(resultSet.getInt("id"));
             student.setLastName(resultSet.getString("last_name"));
             student.setFirstName(resultSet.getString("first_name"));
             student.setEmail(resultSet.getString("email"));
@@ -62,8 +61,8 @@ public class StudentRepository extends Repository<Student> {
     public Student findByLoginAndPassword(String login, String password) throws SQLException, StudentNotFound {
         Student student = new Student();
 
-        String sqlQuery = "SELECT id, last_name, first_name, email, phone_number, login, password FROM student ";
-        sqlQuery += "WHERE login = '" + login.replace("'", "''") + "' AND password = '" + password + "' ;";
+        String sqlQuery = getSelectQuery().substring(0, getSelectQuery().length()-1);
+        sqlQuery += " WHERE login = '" + login.replace("'", "''") + "' AND password = '" + password + "' ;";
 
         Connection connection = this.dbConnect.connect();
         Statement statement = connection.createStatement();
@@ -72,7 +71,7 @@ public class StudentRepository extends Repository<Student> {
         if (resultSet.next() == false) {
             throw new StudentNotFound();
         } else {
-               student.setId(resultSet.getInt(1));
+               student.setId(resultSet.getInt("id"));
                 student.setLastName(resultSet.getString("last_name"));
                 student.setFirstName(resultSet.getString("first_name"));
                 student.setEmail(resultSet.getString("email"));
@@ -88,11 +87,11 @@ public class StudentRepository extends Repository<Student> {
         return student;
     }
 
-    public Student findById(Integer id) throws StudentNotFound, SQLException {
+    public Student findById(int id) throws StudentNotFound, SQLException {
         Student student = new Student();
 
-        String sqlQuery = "SELECT id, last_name, first_name, email, phone_number, login, password FROM student ";
-        sqlQuery += "WHERE id = " + id + ";";
+        String sqlQuery = getSelectQuery().substring(0, getSelectQuery().length()-1);
+        sqlQuery += " WHERE id = " + id + ";";
 
         Connection connection = this.dbConnect.connect();
         Statement statement = connection.createStatement();
@@ -101,7 +100,7 @@ public class StudentRepository extends Repository<Student> {
         if (resultSet.next() == false) {
             throw new StudentNotFound();
         } else {
-                student.setId(resultSet.getInt(1));
+                student.setId(resultSet.getInt("id"));
                 student.setLastName(resultSet.getString("last_name"));
                 student.setFirstName(resultSet.getString("first_name"));
                 student.setEmail(resultSet.getString("email"));
