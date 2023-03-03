@@ -62,7 +62,10 @@ public class StudentBuilder implements Builder<Student> {
             throw new NotEnoughArgsException("Missing last name or email or login or password");
         }
 
-        Student student = new Student(this.lastName, this.email, this.login, this.password);
+        Student student = new Student();
+        student.setLastName(this.lastName);
+        student.setFirstName(this.firstName);
+        student.setEmail(this.email);
         student.setPhoneNumber(this.phoneNumber);
         student.setFirstName(this.firstName);
 

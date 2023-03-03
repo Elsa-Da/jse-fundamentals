@@ -49,7 +49,7 @@ class StudentBuilderTest {
                     () -> assertEquals("Bond", student.getLastName()),
                     () -> assertEquals("James", student.getFirstName()),
                     () -> assertEquals("jbond@mail.com", student.getEmail()),
-                    () -> assertEquals("JBond", student.getUsername()),
+                    () -> assertEquals("JBond", student.getLogin()),
                     () -> assertEquals("007", student.getPassword()),
                     () -> assertEquals("06 58 98 74 28", student.getPhoneNumber())
             );
